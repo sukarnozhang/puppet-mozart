@@ -470,7 +470,8 @@ class mozart {
 
   cat_split_file { "logstash-1.5.5.tar.gz":
     install_dir => "/etc/puppet/modules/mozart/files",
-    creates     =>  $jdk_rpm_path,
+    owner       =>  $user,
+    group       =>  $group,
   }
 
 
