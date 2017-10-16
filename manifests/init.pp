@@ -117,13 +117,16 @@ class mozart {
   # install oracle java and set default
   #####################################################
 
-  $jdk_rpm_path = "/etc/puppet/modules/mozart/files/jdk-8u60-linux-x64.rpm"
+  $jdk_rpm_file = "jdk-8u60-linux-x64.rpm"
+  $jdk_rpm_path = "/etc/puppet/modules/mozart/files/$jdk_rpm_file"
   $jdk_pkg_name = "jdk1.8.0_60"
   $java_bin_path = "/usr/java/$jdk_pkg_name/jre/bin/java"
 
-  cat_split_file { "$jdk_pkg_name.rpm":
+
+  cat_split_file { "$jdk_rpm_file":
     install_dir => "/etc/puppet/modules/mozart/files",
-    creates     =>  $jdk_rpm_path,
+    owner       =>  $user,
+    group       =>  $group,
   }
 
 
@@ -132,7 +135,7 @@ class mozart {
     ensure   => present,
     source   => $jdk_rpm_path,
     notify   => Exec['ldconfig'],
-    require     => Cat_split_file["$jdk_pkg_name.rpm"],
+    require     => Cat_split_file["$jdk_rpm_file"],
   }
 
 

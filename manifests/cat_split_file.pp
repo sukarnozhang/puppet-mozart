@@ -1,4 +1,4 @@
-define mozart::cat_split_file($split_file=$title, $install_dir, $owner, $group, $creates) {
+define mozart::cat_split_file($split_file=$title, $install_dir, $owner, $group) {
 
   # create the install directory
   file { "$install_dir":
