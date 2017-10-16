@@ -1,0 +1,4 @@
+#!/bin/bash
+
+MOZART_DIR=<%= @mozart_dir %>
+$MOZART_DIR/bin/mozartd stop

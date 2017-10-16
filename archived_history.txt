@@ -1,0 +1,339 @@
+commit 3efdfc533139df11e1a002fe8b9c7eb183c14d30
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Aug 31 18:01:32 2017 +0000
+
+    update rabbitmq version
+
+commit e2b28ae3087f01ee03ab6f97ca6028a13ed422b2
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Aug 31 17:55:25 2017 +0000
+
+    update rabbitmq
+
+commit 645b46bab11764e1b4e5a18156cefce0750d24b2
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Aug 25 17:02:47 2017 +0000
+
+    use localhost
+
+commit 9c879992bf877c28bc9493e537854c864691ea47
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Aug 25 16:45:21 2017 +0000
+
+    update to use static name so IP changes don't break access to persisted queues
+
+commit 0e6aca3fee330243da9264fd8da7eb3df335fdac
+Merge: c31e8f2 8d892e5
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Sun Jul 16 19:05:35 2017 +0000
+
+    Merge branch 'master' of https://github.jpl.nasa.gov/hysds-org/puppet-mozart
+
+commit c31e8f2c040190367065669364b5caa5c5dbdf0e
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Sun Jul 16 19:03:20 2017 +0000
+
+    update rabbitmq-server to latest bug fix version; tune for high performance
+    
+    Tune rabbitmq and redis configs and related kernel params.
+    Start redis service after multi-user.target to recognize disabling of THP on boot.
+
+commit 8d892e51fb1e59f0cc578e98aeeba4e1a55024a2
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Jul 13 03:39:19 2017 +0000
+
+    install third_party celery
+
+commit 32bf016569d480ff802ed79c4f8eef051065f324
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Mon Jun 12 19:24:38 2017 +0000
+
+    remove leading whitespace; set timeout
+
+commit 496bd61750f57e74b97657212208284d83c38638
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Mon Jun 12 16:39:50 2017 +0000
+
+    use redis from yum since latest is version 3.2+
+
+commit 2ab25d2cecfb1dbc3f5ab0f6ba558f8dc6382082
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Mar 17 01:39:56 2017 +0000
+
+    fix version conflicts
+
+commit 85ce12c08ca4c18071cebc1b07882502c7835713
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Mon Mar 13 16:31:46 2017 +0000
+
+    rely on systemd to start/stop ES and rabbitmq
+
+commit 203e4820b7a1e2e933d22ef7aab3017e1cd52e99
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Feb 21 19:59:05 2017 +0000
+
+    add firewall and httpd configs for figaro
+
+commit 3db8ce392a6b1ab8f92fd4be42839fad5e5d1128
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Jan 26 21:56:43 2017 +0000
+
+    update description
+
+commit 82c6659529742f4b4bb574ba55fbf3e10b7cfc49
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Jan 26 21:45:15 2017 +0000
+
+    update to latest rabbitmq-server with bug and security fixes
+
+commit 6f6ab10ce72c4ff7a9617dd6b8f8a266306862b0
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Jan 11 19:22:04 2017 +0000
+
+    install hysds_commons
+
+commit bd108457ad47c78928a809767119f9a648fafef1
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jan 10 15:48:29 2017 +0000
+
+    update to latest pip and setuptools to process dependency links
+
+commit 379a5f3d8339c18db456e64833edb476b1d7b584
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Nov 8 00:16:56 2016 +0000
+
+    increase backlog setting to prevent socket time out errors on large scale concurrent connections
+
+commit 1158c7ba91eab67b690a2478d9bd464809341a81
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Mon Nov 7 23:03:24 2016 +0000
+
+    tune elasticsearch for large number of concurrent connections
+
+commit 3b57c2860ae18414e129bb10e0a784b9f05632fa
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Jun 2 19:31:18 2016 +0000
+
+    update rabbitmq-server to 3.6.2
+
+commit 07efed52a8dda94fb8db2e05faf207ee1cca9527
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Mon Mar 21 16:24:29 2016 +0000
+
+    update rabbitmq-server to 3.6.1 (bug fix release)
+
+commit 3117fa72634550da301564e611213b0a9dd6df2d
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Jan 27 15:59:13 2016 +0000
+
+    handle duplicate declaration
+
+commit f3b1cf3689fd055721f4889c710865f4421bfbe0
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Jan 27 15:16:02 2016 +0000
+
+    remove group write perm
+
+commit 00a071853529f58fa87e17441953914bfdfc1fef
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Jan 27 15:07:38 2016 +0000
+
+    require user
+
+commit 346e0d1612ce47c293ba012a0bd44c80901403f3
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jan 26 20:14:29 2016 +0000
+
+    make /home/ops readable for apache proxy
+
+commit e833dd1be9ef56f2760ceb139c1192b2bae4c988
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jan 26 18:38:15 2016 +0000
+
+    open up port 8888 for debugging purposes
+
+commit 7a0a7b74f0b12d0b274c76965c02b0a31d351326
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jan 26 18:27:09 2016 +0000
+
+    run mozart web app behind apache proxy
+
+commit b5de55a3ba0212c0b85de59010ec2703206ef6ec
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Mon Jan 4 16:38:10 2016 +0000
+
+    update rabbitmq-server
+
+commit 956718bb5b316dd27e2d7abe4b57d2a6e85d0c70
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 20:25:37 2015 +0000
+
+    remove credential copying from centos user
+
+commit 539d5dab8167a35009c179d0914f24c32bb6c692
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 20:03:18 2015 +0000
+
+    clone grq2, tosca and spyddder-man
+
+commit 7b3de08b817c4a0430738e51c0d4dcfe3328889e
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 19:41:50 2015 +0000
+
+    clone user_rules_product
+
+commit d46b8750f14ad64fc80c6a59e301cc395c44da6a
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 18:31:59 2015 +0000
+
+    revert back to ES 1.x until there's more support for ES 2.0
+
+commit 6084a23c0a75c2101d5c3e096e8595a2eb80c862
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 16:27:11 2015 +0000
+
+    unify name for hysds install script
+
+commit 37325be529d70a73f24c24c366c3dfab55a1308d
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 15:58:47 2015 +0000
+
+    update logstash
+
+commit 7beba2ced7413ac5b3067abe0af8c107438855b7
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 14:59:45 2015 +0000
+
+    remove setting default user; handled in scientific_python
+
+commit f473864330b963e177aef446d211f18825c74ba3
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 14:48:24 2015 +0000
+
+    change default user to ops
+
+commit 9d26092876c2c8881a9f5ff1640494dd80b344fa
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Nov 5 21:19:34 2015 +0000
+
+    update elasticsearch and rabbitmq
+
+commit ac23a4048513e2b93a90bea44dedaae8622e8951
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Nov 5 19:57:40 2015 +0000
+
+    set swapfile max size
+
+commit 85c1c470e87805ddc20f1e2a79dd6f58e41c931a
+Author: root <root@mimosa-vm-5.jpl.nasa.gov>
+Date:   Wed Oct 21 00:12:24 2015 +0000
+
+    add ports for ES clustering
+
+commit 83d3e17e6c66c9bdf1accac4f6becb9ae2386e88
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Oct 14 19:00:46 2015 +0000
+
+    force install supervisor
+
+commit 8a0f3a287c70d57614fa348e4e024c21c6faaa74
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Oct 14 18:09:50 2015 +0000
+
+    use pip for development mode; install osaka
+
+commit efc72f290bf4cfc059f848528c4e49a5fed8c1f7
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Oct 1 18:59:56 2015 +0000
+
+    include cloud_utils
+
+commit 847e6a399d1e9261bba6e29b8c8dee98a7fcddd6
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Oct 1 16:52:25 2015 +0000
+
+    update doc
+
+commit c9832ff4631519b736662c73e1f9e90575986fe7
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Sep 29 15:41:22 2015 +0000
+
+    add timeout for swap file creation
+
+commit 7fe2a8f8ef265efde1e4d7ebd06e393438bbe263
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Sep 25 07:12:23 2015 +0000
+
+    open up port for flower
+
+commit 7a1421aadf6bbfc9e3c1a6d546ce20427a4b6118
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Sep 25 00:12:28 2015 +0000
+
+    add conf files
+
+commit b41f7a2b3cbb7ca35ad8225a98d757dbe1f46546
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Sep 25 00:12:06 2015 +0000
+
+    secure httpd
+
+commit 9a8f9a3b134915a7c8446e28e541515e576c1e78
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Sep 25 00:03:51 2015 +0000
+
+    move to template
+
+commit b2b73396889302c4d77a5771d735e56d3359db32
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 24 23:26:15 2015 +0000
+
+    cleanup bash_profile
+
+commit 82a4ad6fe58db957092b4b869f69fd55f9a335d4
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 24 13:35:04 2015 +0000
+
+    update rabbitmq-server
+
+commit 2855ef611832128e791137a5215863d5a6adb2a8
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 24 13:12:38 2015 +0000
+
+    yum update automatically
+
+commit 388dc22b636fccf1397dce051ff8b3d19e9493fb
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Sep 22 18:47:18 2015 +0000
+
+    remove hard-coding of PAT
+
+commit 4baf4c89b1a5ac88f11e88cee952a3974fca8411
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Sep 18 20:06:45 2015 +0000
+
+    updated read-only oauth token
+
+commit 95c001e43621b0ba7c4332a824fd28c6e880e40a
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Sep 18 02:32:29 2015 +0000
+
+    repacked tar file with ops:ops ownership
+
+commit 2ba507442f95cc8bee5cb6fac0dea5f18a8c5f37
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 22:48:14 2015 +0000
+
+    set perms more group read-only
+
+commit 116fb1d6dd4e0724b291705f1f7f0cd6c305ff89
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 22:19:37 2015 +0000
+
+    fix doc
+
+commit 942477b0c25d064f96a5fb9033449988fcd2bb7b
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 22:17:24 2015 +0000
+
+    initial import
