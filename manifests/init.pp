@@ -191,6 +191,14 @@ class mozart {
   }
 
 
+  file { '/etc/elasticsearch/logging.yml':
+    ensure       => file,
+    content      => template('mozart/logging.yml'),
+    mode         => 0644,
+    require      => Package['elasticsearch'],
+  }
+
+
   file { '/usr/lib/systemd/system/elasticsearch.service':
     ensure       => file,
     content      => template('mozart/elasticsearch.service'),
@@ -208,6 +216,7 @@ class mozart {
     require    => [
                    File['/etc/sysconfig/elasticsearch'],
                    File['/etc/elasticsearch/elasticsearch.yml'],
+                   File['/etc/elasticsearch/logging.yml'],
                    File['/usr/lib/systemd/system/elasticsearch.service'],
                    Exec['daemon-reload'],
                   ],
