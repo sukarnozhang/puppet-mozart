@@ -184,11 +184,22 @@ class mozart inherits scientific_python {
   $cerebro_rpm_path = "/etc/puppet/modules/mozart/files/$cerebro_rpm_file"
 
 
+  cat_split_file { "$cerebro_rpm_file":
+    install_dir => "/etc/puppet/modules/mozart/files",
+    owner       =>  $user,
+    group       =>  $group,
+  }
+
+
   package { 'cerebro':
     provider => rpm,
     ensure   => present,
     source   => $cerebro_rpm_path,
-    require  => Service['elasticsearch'],
+    require  => [
+                  Cat_split_file["$cerebro_rpm_file"],
+                  Service['elasticsearch'],
+                  Exec['set-java'],
+                ],
   }
 
 
