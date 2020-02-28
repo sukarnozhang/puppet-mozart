@@ -63,8 +63,8 @@ class mozart inherits scientific_python {
 
   $jdk_rpm_file = "jdk-8u241-linux-x64.rpm"
   $jdk_rpm_path = "/etc/puppet/modules/mozart/files/$jdk_rpm_file"
-  $jdk_pkg_name = "jdk1.8.0_241"
-  $java_bin_path = "/usr/java/$jdk_pkg_name/jre/bin/java"
+  $jdk_pkg_name = "jdk1.8.x86_64"
+  $java_bin_path = "/usr/java/jdk1.8.0_241-amd64/jre/bin/java"
 
 
   cat_split_file { "$jdk_rpm_file":
@@ -148,9 +148,9 @@ class mozart inherits scientific_python {
   }
 
 
-  file { '/etc/elasticsearch/logging.yml':
+  file { '/etc/elasticsearch/log4j2.properties':
     ensure       => file,
-    content      => template('mozart/logging.yml'),
+    content      => template('mozart/log4j2.properties'),
     mode         => 0644,
     require      => Package['elasticsearch'],
   }
@@ -173,23 +173,23 @@ class mozart inherits scientific_python {
     require    => [
                    File['/etc/sysconfig/elasticsearch'],
                    File['/etc/elasticsearch/elasticsearch.yml'],
-                   File['/etc/elasticsearch/logging.yml'],
+                   File['/etc/elasticsearch/log4j2.properties'],
                    File['/usr/lib/systemd/system/elasticsearch.service'],
                    Exec['daemon-reload'],
                   ],
   }
 
 
-  es_plugin { 'kopf':
-    path     => 'lmenezes/elasticsearch-kopf/1.2',
-    require  => Service['elasticsearch'],
-  }
-
-
-  es_plugin { 'head':
-    path     => 'mobz/elasticsearch-head',
-    require  => Service['elasticsearch'],
-  }
+#  es_plugin { 'kopf':
+#    path     => 'lmenezes/elasticsearch-kopf/1.2',
+#    require  => Service['elasticsearch'],
+#  }
+#
+#
+#  es_plugin { 'head':
+#    path     => 'mobz/elasticsearch-head',
+#    require  => Service['elasticsearch'],
+#  }
 
 
   #####################################################
@@ -308,6 +308,7 @@ class mozart inherits scientific_python {
 
   $rmq_rpm_pkg = "/etc/puppet/modules/mozart/files/rabbitmq-server-3.8.2-1.el7.noarch.rpm"
   $rmq_pkg_name = "rabbitmq-server-3.8.2-1.el7"
+
 
   exec { "$rmq_pkg_name":
     path    => ["/sbin", "/bin", "/usr/bin"],
@@ -462,14 +463,14 @@ class mozart inherits scientific_python {
   }
 
 
-  cat_split_file { "kibana-7.1.1-linux-x64.tar.gz":
+  cat_split_file { "kibana-7.1.1-linux-x86_64.tar.gz":
     install_dir => "/etc/puppet/modules/mozart/files",
     owner       =>  $user,
     group       =>  $group,
   }
 
 
-  tarball { "kibana-7.1.1-linux-x64.tar.gz":
+  tarball { "kibana-7.1.1-linux-x86_64.tar.gz":
     install_dir => "/var/www/html",
     owner => 'root',
     group => 'root',
@@ -485,7 +486,7 @@ class mozart inherits scientific_python {
     target => "/var/www/html/kibana-7.1.1",
     owner => 'root',
     group => 'root',
-    require => Tarball['kibana-7.1.1-linux-x64.tar.gz'],
+    require => Tarball['kibana-7.1.1-linux-x86_64.tar.gz'],
   }
 
 
