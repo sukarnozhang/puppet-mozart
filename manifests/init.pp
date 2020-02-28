@@ -180,16 +180,29 @@ class mozart inherits scientific_python {
   }
 
 
-#  es_plugin { 'kopf':
-#    path     => 'lmenezes/elasticsearch-kopf/1.2',
-#    require  => Service['elasticsearch'],
-#  }
-#
-#
-#  es_plugin { 'head':
-#    path     => 'mobz/elasticsearch-head',
-#    require  => Service['elasticsearch'],
-#  }
+  $cerebro_rpm_file = "cerebro-0.8.5-1.noarch.rpm"
+  $cerebro_rpm_path = "/etc/puppet/modules/mozart/files/$cerebro_rpm_file"
+
+
+  package { 'cerebro':
+    provider => rpm,
+    ensure   => present,
+    source   => $cerebro_rpm_path,
+    require  => Service['elasticsearch'],
+  }
+
+
+  service { 'cerebro':
+    ensure     => running,
+    enable     => true,
+    hasrestart => true,
+    hasstatus  => true,
+    provider   => init,
+    require    => [
+                   Package['cerebro'],
+                   Exec['daemon-reload'],
+                  ],
+  }
 
 
   #####################################################
@@ -560,6 +573,11 @@ class mozart inherits scientific_python {
   firewalld::zone { 'public':
     services => [ "ssh", "dhcpv6-client", "http", "https" ],
     ports => [
+      {
+        # Cerebro (ES web admin tool)
+        port     => "9000",
+        protocol => "tcp",
+      },
       {
         # ElasticSearch
         port     => "9200",
