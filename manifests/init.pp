@@ -61,9 +61,9 @@ class mozart inherits scientific_python {
   # install oracle java and set default
   #####################################################
 
-  $jdk_rpm_file = "jdk-8u60-linux-x64.rpm"
+  $jdk_rpm_file = "jdk-8u241-linux-x64.rpm"
   $jdk_rpm_path = "/etc/puppet/modules/mozart/files/$jdk_rpm_file"
-  $jdk_pkg_name = "jdk1.8.0_60"
+  $jdk_pkg_name = "jdk1.8.0_241"
   $java_bin_path = "/usr/java/$jdk_pkg_name/jre/bin/java"
 
 
@@ -110,12 +110,25 @@ class mozart inherits scientific_python {
   #####################################################
 
   $es_heap_size = $msize_mb / 2
+  $es_rpm_file = "elasticsearch-7.1.1-x86_64.rpm"
+  $es_rpm_path = "/etc/puppet/modules/mozart/files/$es_rpm_file"
+
+
+  cat_split_file { "$es_rpm_file":
+    install_dir => "/etc/puppet/modules/mozart/files",
+    owner       =>  $user,
+    group       =>  $group,
+  }
+
 
   package { 'elasticsearch':
     provider => rpm,
     ensure   => present,
-    source   => "/etc/puppet/modules/mozart/files/elasticsearch-1.7.3.noarch.rpm",
-    require  => Exec['set-java'],
+    source   => $es_rpm_path,
+    require  => [
+                  Cat_split_file["$es_rpm_file"],
+                  Exec['set-java'],
+                ],
   }
 
 
@@ -293,8 +306,8 @@ class mozart inherits scientific_python {
   # install rabbitmq
   #####################################################
 
-  $rmq_rpm_pkg = "/etc/puppet/modules/mozart/files/rabbitmq-server-3.6.11-1.el7.noarch.rpm"
-  $rmq_pkg_name = "rabbitmq-server-3.6.11-1.el7"
+  $rmq_rpm_pkg = "/etc/puppet/modules/mozart/files/rabbitmq-server-3.8.2-1.el7.noarch.rpm"
+  $rmq_pkg_name = "rabbitmq-server-3.8.2-1.el7"
 
   exec { "$rmq_pkg_name":
     path    => ["/sbin", "/bin", "/usr/bin"],
@@ -422,34 +435,41 @@ class mozart inherits scientific_python {
   }
 
 
-  cat_split_file { "logstash-1.5.5.tar.gz":
+  cat_split_file { "logstash-7.1.1.tar.gz":
     install_dir => "/etc/puppet/modules/mozart/files",
     owner       =>  $user,
     group       =>  $group,
   }
 
 
-  tarball { "logstash-1.5.5.tar.gz":
+  tarball { "logstash-7.1.1.tar.gz":
     install_dir => "/home/$user",
     owner => $user,
     group => $group,
     require => [
                 User[$user],
-                Cat_split_file["logstash-1.5.5.tar.gz"],
+                Cat_split_file["logstash-7.1.1.tar.gz"],
                ]
   }
 
 
   file { "/home/$user/logstash":
     ensure => 'link',
-    target => "/home/$user/logstash-1.5.5",
+    target => "/home/$user/logstash-7.1.1",
     owner => $user,
     group => $group,
-    require => Tarball['logstash-1.5.5.tar.gz'],
+    require => Tarball['logstash-7.1.1.tar.gz'],
   }
 
 
-  tarball { "kibana-3.1.2.tar.gz":
+  cat_split_file { "kibana-7.1.1-linux-x64.tar.gz":
+    install_dir => "/etc/puppet/modules/mozart/files",
+    owner       =>  $user,
+    group       =>  $group,
+  }
+
+
+  tarball { "kibana-7.1.1-linux-x64.tar.gz":
     install_dir => "/var/www/html",
     owner => 'root',
     group => 'root',
@@ -462,10 +482,10 @@ class mozart inherits scientific_python {
  
   file { "/var/www/html/metrics":
     ensure => 'link',
-    target => "/var/www/html/kibana-3.1.2",
+    target => "/var/www/html/kibana-7.1.1",
     owner => 'root',
     group => 'root',
-    require => Tarball['kibana-3.1.2.tar.gz'],
+    require => Tarball['kibana-7.1.1-linux-x64.tar.gz'],
   }
 
 
