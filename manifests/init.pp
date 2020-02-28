@@ -169,7 +169,6 @@ class mozart inherits scientific_python {
     enable     => true,
     hasrestart => true,
     hasstatus  => true,
-    provider   => init,
     require    => [
                    File['/etc/sysconfig/elasticsearch'],
                    File['/etc/elasticsearch/elasticsearch.yml'],
@@ -208,7 +207,6 @@ class mozart inherits scientific_python {
     enable     => true,
     hasrestart => true,
     hasstatus  => true,
-    provider   => init,
     require    => [
                    Package['cerebro'],
                    Exec['daemon-reload'],
