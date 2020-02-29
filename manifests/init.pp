@@ -216,9 +216,10 @@ class mozart inherits scientific_python {
     hasrestart => true,
     hasstatus  => true,
     require    => [
-                   File['/usr/lib/systemd/system/cerebro.service'],
+                   Package['cerebro'],
                    Exec['daemon-reload'],
                   ],
+    subscribe  => File['/usr/lib/systemd/system/cerebro.service'],
   }
 
 
