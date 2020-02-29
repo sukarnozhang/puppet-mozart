@@ -249,7 +249,7 @@ class mozart inherits scientific_python {
 
 
   #####################################################
-  # tune kernel for high performance redis
+  # tune kernel for high performance
   #####################################################
 
   file { "/usr/lib/sysctl.d":
@@ -258,9 +258,9 @@ class mozart inherits scientific_python {
   }
 
 
-  file { "/usr/lib/sysctl.d/redis.conf":
+  file { "/usr/lib/sysctl.d/mozart.conf":
     ensure  => present,
-    content => template('mozart/redis.conf.sysctl'),
+    content => template('mozart/mozart.conf'),
     mode    => 0644,
     require => File["/usr/lib/sysctl.d"],
   }
@@ -269,7 +269,7 @@ class mozart inherits scientific_python {
   exec { "sysctl-system":
     path    => ["/sbin", "/bin", "/usr/bin"],
     command => "/sbin/sysctl --system",
-    require => File["/usr/lib/sysctl.d/redis.conf"],
+    require => File["/usr/lib/sysctl.d/mozart.conf"],
   }
 
 
