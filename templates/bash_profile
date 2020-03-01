@@ -9,10 +9,6 @@ fi
 umask 0022
 export GIT_SSL_NO_VERIFY=true
 
-# no longer needed since conda base env is sourced in .bashrc
-#export LD_LIBRARY_PATH=<%= @conda_path %>/lib:/usr/lib:/usr/lib64:/usr/local/lib:$LD_LIBRARY_PATH
-#export PATH=<%= @conda_path %>/bin:$PATH
-
 # source mozart virtualenv if exists
 export MOZART_DIR=$HOME/mozart
 if [ -e "$MOZART_DIR/bin/activate" ]; then
