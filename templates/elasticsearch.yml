@@ -86,3 +86,7 @@ cluster.initial_master_nodes: ["resource_cluster-master"]
 # Require explicit names when deleting indices:
 #
 #action.destructive_requires_name: true
+
+# increase thread pools for search and write
+thread_pool.search.queue_size: 100000
+thread_pool.write.queue_size: 100000
