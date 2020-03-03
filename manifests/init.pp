@@ -8,9 +8,9 @@ class mozart inherits scientific_python {
   # add swap file 
   #####################################################
 
-  swap { '/mnt/swapfile':
-    ensure   => present,
-  }
+  #swap { '/mnt/swapfile':
+  #  ensure   => present,
+  #}
 
 
   #####################################################
