@@ -43,6 +43,7 @@ class mozart inherits scientific_python {
     'httpd': ensure => present;
     'httpd-devel': ensure => present;
     'mod_ssl': ensure => present;
+    'nodejs': ensure => present;
   }
 
 
