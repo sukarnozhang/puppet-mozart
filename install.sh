@@ -30,10 +30,10 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-#if [ ! -d "/usr/share/puppet/modules/firewalld" ]; then
-#  echo "puppet-firewalld must be installed. Run 'yum install puppet-firewalld'."
-#  exit 1
-#fi
+if [ ! -d "/usr/share/puppet/modules/firewalld" ]; then
+  echo "puppet-firewalld must be installed. Run 'yum install puppet-firewalld'."
+  exit 1
+fi
 
 
 ##########################################
